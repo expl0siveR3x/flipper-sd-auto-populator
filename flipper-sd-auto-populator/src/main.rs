@@ -5,11 +5,13 @@ mod profile;
 
 use app::MyApp;
 
-//TODO
-//Backup sd before doing operations to it as an optional mode (good for modifying customer's flippers)
-
 fn main() -> eframe::Result<()> {
-    let native_options = eframe::NativeOptions::default();
+    let native_options = eframe::NativeOptions {
+        viewport: eframe::egui::ViewportBuilder::default()
+            .with_inner_size([900.0, 640.0])
+            .with_min_inner_size([700.0, 500.0]),
+        ..Default::default()
+    };
     eframe::run_native(
         "Flipper SD Provisioner",
         native_options,
